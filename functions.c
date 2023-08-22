@@ -23,12 +23,77 @@ int _myputs(char *s)
 {
 	int count = 0;
 
-	if (s)
+	while (*s)
 	{
-		for (count = 0; s[count] != '\0'; count++)
-		{
-			_myputchar(s[count]);
-		}
+		_myputchar('s');
+		count++;
+		s++;
 	}
+
 	return (count);
 }
+
+/**
+ *_print_integers - function prints integers.
+ *@n: number.
+ *
+ * Return: number of integers passed.
+ */
+int _print_integers(long n)
+{
+	int i = 0, count = 0, neg = 0;
+	char buffer[BUFFER_SIZE];
+
+	if (n == 0)
+	{
+		buffer[i++] = '0';
+		write(1, buffer, i);
+		return (1);
+	}
+	if (n < 0)
+	{
+		neg = n;
+		n = -n;
+	}
+
+	while (n != 0)
+	{
+		buffer[i++] = (num % 10) + '0';
+		count++;
+		n /= 10;
+	}
+
+	if (n < 0)
+	{
+		buffer[i++] = '-';
+		count++;
+	}
+
+	buffer[i] = '\0';
+	_reverse_sting(buffer, i);
+	write(1, buffer, i);
+
+	return (count);
+}
+/**
+ * _reverse_string - reverse the order of characters
+ * in a given string.
+ * @s:string to be reversed.
+ * @len: length of the string.
+ */
+void _reverse_string(char *s, int len)
+{
+
+	int first = 0, last;
+	char temp;
+
+	for (first = 0; last = (len - 1); first < last; first++, last--)
+	{
+		temp = s[first];
+		s[first] = s[last];
+		s[last] = temp;
+	}
+}
+
+
+

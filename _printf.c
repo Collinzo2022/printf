@@ -1,12 +1,10 @@
 #include "main.h"
 /**
  * _printf - function that produces formatted string.
- *
- * @format: character string.
+ *@format: character string.
  *
  * Return: The number of characters printed(excluding null byte)
  */
-
 int _printf(const char *format, ...)
 {
 	unsigned int i = 0;
@@ -17,7 +15,6 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 
 	va_start(args, format);
 
@@ -44,6 +41,11 @@ int _printf(const char *format, ...)
 				s_count = _myputs(va_arg(args, char *));
 				i++;
 				count += (s_count - 1);
+			}
+			else if (format[i] == 'd' || 'i')
+			{
+				_myputchar(va_arg(args, int));
+				count++;
 			}
 			else if (format[i] == '%')
 			{
