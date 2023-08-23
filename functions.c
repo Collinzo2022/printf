@@ -96,6 +96,18 @@ void _reverse_string(char *s, int len)
 		s[last] = temp;
 	}
 }
+/**
+ * _print_percent - prints percent.
+ * Return: 1.
+ */
+int _print_percent(void)
+{
+	int count = 0;
+
+	write(1, "%", 1);
+	count++;
+	return (count);
+}
 
 
 
