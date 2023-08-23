@@ -9,6 +9,6 @@ int _printf(const char *format, ...);
 int _myputchar(char c);
 int _myputs(char *s);
 int _print_integers(long n);
-void _reversed_string(char *s, int len);
+void _reverse_string(char *s, int len);
 
 #endif

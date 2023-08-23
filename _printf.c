@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			i++;
-			if (format[i] == '\0')
+			if (format[i] != '\0')
 				break;
 
 			if (format[i] == 'c')
@@ -39,10 +39,9 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				s_count = _myputs(va_arg(args, char *));
-				i++;
 				count += (s_count - 1);
 			}
-			else if (format[i] == 'd' || 'i')
+			else if (format[i] == 'd' || format[i] =='i')
 			{
 				_myputchar(va_arg(args, int));
 				count++;

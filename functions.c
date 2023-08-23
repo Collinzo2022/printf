@@ -1,4 +1,6 @@
 #include "main.h"
+
+
 /**
  * _myputchar - function prints out the output
  * to the stdout.
@@ -52,25 +54,25 @@ int _print_integers(long n)
 	}
 	if (n < 0)
 	{
-		neg = n;
+		neg = 1;
 		n = -n;
 	}
 
 	while (n != 0)
 	{
-		buffer[i++] = (num % 10) + '0';
+		buffer[i++] = (n % 10) + '0';
 		count++;
 		n /= 10;
 	}
 
-	if (n < 0)
+	if (neg < 0)
 	{
 		buffer[i++] = '-';
 		count++;
 	}
 
 	buffer[i] = '\0';
-	_reverse_sting(buffer, i);
+	_reverse_string(buffer, i);
 	write(1, buffer, i);
 
 	return (count);
@@ -87,7 +89,7 @@ void _reverse_string(char *s, int len)
 	int first = 0, last;
 	char temp;
 
-	for (first = 0; last = (len - 1); first < last; first++, last--)
+	for (first = 0, last = len - 1; first < last; first++, last--)
 	{
 		temp = s[first];
 		s[first] = s[last];
