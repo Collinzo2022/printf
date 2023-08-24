@@ -12,6 +12,7 @@ int _print_integers(long n);
 void _reverse_string(char *s, int len);
 int _print_percent(void);
 int _print_chars(char c);
+int _print_strings(char *s);
 
 /*handles conversion of specifiers*/
 int _conversion(const char *format, va_list args);

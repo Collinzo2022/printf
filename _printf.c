@@ -7,9 +7,8 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0;
 	unsigned int count = 0;
-	int s_count = 0;
+
 
 	va_list args;
 
@@ -18,41 +17,22 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	while (format[i] != '\0')
+	while (*format)
 	{
-		if (format[i] != '%')
+		if (*format == '%')
 		{
-			_myputchar(format[i]);
-			count++;
+			format++;
+			if (*format == '\0')
+				return (-1);
+			if (*format == '%')
+				count += _print_percent();
+			count += _conversion(format, args);
+
 		}
 		else
-		{
-			i++;
-			if (format[i] == '\0')
-				break;
+			count += _myputchar(*format);
 
-			if (format[i] == 'c')
-			{
-				_myputchar(va_arg(args, int));
-				count++;
-			}
-			else if (format[i] == 's')
-			{
-				s_count = _myputs(va_arg(args, char *));
-				count += (s_count - 1);
-			}
-			else if (format[i] == 'd' || format[i] == 'i')
-			{
-				_myputchar(va_arg(args, int));
-				count++;
-			}
-			else if (format[i] == '%')
-			{
-				_myputchar('%');
-				count++;
-			}
-		}
-		i++;
+		format++;
 	}
 	va_end(args);
 

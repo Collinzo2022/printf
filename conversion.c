@@ -13,17 +13,17 @@ int _conversion(const char *format, va_list args)
 	switch (*format)
 	{
 		case 'c':
-			counts += _print_chars(va_arg(ars, int));
+			counts += _print_chars(va_arg(args, int));
 			break;
 		case 's':
 			counts += _print_strings(va_arg(args, char *));
 			break;
 		case 'd':
 		case 'i':
-			count += _print_integers(va_arg(args, int));
+			counts += _print_integers(va_arg(args, int));
 			break;
 		default:
 			break;
 	}
-	return (count);
+	return (counts);
 }

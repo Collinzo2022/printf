@@ -27,7 +27,7 @@ int _myputs(char *s)
 
 	while (*s)
 	{
-		_myputchar('s');
+		_myputchar(*s);
 		count++;
 		s++;
 	}
@@ -65,7 +65,7 @@ int _print_integers(long n)
 		n /= 10;
 	}
 
-	if (neg < 0)
+	if (neg == 1)
 	{
 		buffer[i++] = '-';
 		count++;
